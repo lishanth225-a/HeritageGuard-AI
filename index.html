@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102b25" />
+  <meta name="description" content="HeritageGuard AI is a student prototype for heritage-site visitor flow monitoring, visual surface screening, and conservation alerts." />
+  <title>HeritageGuard AI | Smart Preservation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="HeritageGuard home">
+        <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 32h30M9 28V17h22v11M7 16 20 6l13 10M14 28V19h12v9M17 13h6" /></svg></span>
+        <span><strong>HeritageGuard</strong><small>SMART PRESERVATION</small></span>
+      </a>
+      <div class="site-switcher">
+        <span class="site-icon">⌂</span>
+        <span><small>MONITORING SITE</small><strong>Chola Heritage Complex</strong></span>
+        <span class="chevron">⌄</span>
+      </div>
+      <p class="nav-label">WORKSPACE</p>
+      <nav class="nav-menu" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">▦</span> Overview</button>
+        <button class="nav-link" data-page="crowd"><span class="nav-icon">♙</span> Crowd monitor <span class="nav-count" id="crowdNavCount">2</span></button>
+        <button class="nav-link" data-page="wear"><span class="nav-icon">⌕</span> Wear analyzer</button>
+        <button class="nav-link" data-page="map"><span class="nav-icon">⌖</span> Site map</button>
+        <button class="nav-link" data-page="reports"><span class="nav-icon">▤</span> Reports & alerts</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <strong>Preserve the past.</strong>
+          <p>Use data-driven insights to protect heritage for the future.</p>
+          <button data-page="reports" class="text-button">View site alerts <span>→</span></button>
+        </div>
+        <div class="profile">
+          <div class="avatar">HG</div>
+          <div><strong>Site Administrator</strong><small>Conservation team</small></div>
+          <button class="more-button" aria-label="More profile options">•••</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="breadcrumbTitle">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="demo-pill"><i></i> DEMO DATA</span>
+          <button class="icon-button" id="refreshBtn" title="Refresh simulated data" aria-label="Refresh data">↻</button>
+          <button class="icon-button" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">☾</button>
+          <button class="notification-button" data-page="reports" aria-label="View alerts">♧<span></span></button>
+          <div class="top-avatar">SA</div>
+        </div>
+      </header>
+
+      <section class="page active-page" id="page-dashboard">
+        <div class="page-heading">
+          <div><p class="eyebrow"><span id="todayLabel">SITE INTELLIGENCE</span></p><h1>Good morning, Administrator <span>✳</span></h1><p class="subheading">Here’s what’s happening across your heritage site today.</p></div>
+          <button class="button button-primary" id="generateReportBtn"><span>＋</span> Generate report</button>
+        </div>
+        <div class="notice-banner"><span class="notice-symbol">ⓘ</span><div><strong>Prototype environment</strong><p>Visitor counts, alerts, and risk scores are sample data for demonstration—not live sensor readings.</p></div><button id="dismissNotice" aria-label="Dismiss notice">×</button></div>
+
+        <div class="section-title-row"><div><h2>Site at a glance</h2><p>Key indicators across all monitored zones</p></div><span class="updated-label"><i></i> Updated just now</span></div>
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon green">♙</span><span class="metric-trend positive">↗ 8.2%</span></div><p class="metric-label">Visitors on site</p><div class="metric-value"><span id="visitorTotal">128</span><small> visitors</small></div><p class="metric-foot">Compared with previous hour</p><div class="sparkline green-line"><svg viewBox="0 0 140 34" preserveAspectRatio="none"><path d="M0 28 L15 24 L29 26 L43 15 L57 19 L71 10 L85 17 L100 8 L114 12 L128 4 L140 7"/></svg></div></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon blue">◉</span><span class="metric-trend neutral">Within limit</span></div><p class="metric-label">Site occupancy</p><div class="metric-value"><span id="occupancyValue">64</span><small>%</small></div><div class="progress-track"><span id="occupancyBar" style="width:64%"></span></div><p class="metric-foot"><span id="occupancyDetail">128</span> of 200 recommended capacity</p></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon amber">⌕</span><span class="metric-trend warning">Needs review</span></div><p class="metric-label">Wear flags</p><div class="metric-value"><span id="wearFlagCount">3</span><small> areas</small></div><p class="metric-foot">Sample inspection records</p><div class="mini-bars"><i style="height:38%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:78%"></i><i style="height:62%"></i><i style="height:92%"></i><i style="height:70%"></i><i style="height:85%"></i><i style="height:58%"></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon red">⚑</span><span class="metric-trend danger" id="riskBadge">Elevated</span></div><p class="metric-label">Preservation risk</p><div class="metric-value"><span id="riskValue">72</span><small>/ 100</small></div><p class="metric-foot">Based on sample zone indicators</p><div class="risk-track"><span id="riskBar" style="width:72%"></span></div></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel crowd-panel">
+            <div class="panel-header"><div><h2>Crowd density by zone</h2><p>Current estimated occupancy</p></div><button class="select-button" id="densityPeriod">Live demo <span>⌄</span></button></div>
+            <div class="chart-legend"><span><i class="legend-dot low"></i>Low</span><span><i class="legend-dot medium"></i>Moderate</span><span><i class="legend-dot high"></i>High</span></div>
+            <div class="bar-chart" id="densityChart">
+              <div class="chart-y-labels"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div>
+              <div class="chart-plot">
+                <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="bar-group"><div class="bar low-bar" style="height:42%"><span>42%</span></div><small>Main<br>entrance</small></div>
+                <div class="bar-group"><div class="bar medium-bar" style="height:78%"><span>78%</span></div><small>Temple<br>courtyard</small></div>
+                <div class="bar-group"><div class="bar high-bar" style="height:92%"><span>92%</span></div><small>Ancient<br>pillars</small></div>
+                <div class="bar-group"><div class="bar low-bar" style="height:35%"><span>35%</span></div><small>East<br>gallery</small></div>
+                <div class="bar-group"><div class="bar medium-bar" style="height:66%"><span>66%</span></div><small>South<br>corridor</small></div>
+              </div>
+            </div>
+            <button class="panel-link" data-page="crowd">View crowd monitor <span>→</span></button>
+          </article>
+          <article class="panel alerts-panel">
+            <div class="panel-header"><div><h2>Priority alerts</h2><p>Items requiring attention</p></div><span class="alert-count" id="alertCount">3 active</span></div>
+            <div class="alert-list" id="priorityAlerts"></div>
+            <button class="panel-link" data-page="reports">View all alerts <span>→</span></button>
+          </article>
+        </div>
+
+        <div class="bottom-grid">
+          <article class="panel zone-panel">
+            <div class="panel-header"><div><h2>Zone status</h2><p>Quick operational overview</p></div><button class="plain-button" data-page="map">Open site map ↗</button></div>
+            <div class="table-wrap"><table><thead><tr><th>ZONE</th><th>OCCUPANCY</th><th>CONDITION</th><th>STATUS</th></tr></thead><tbody id="zoneTable"></tbody></table></div>
+          </article>
+          <article class="panel activity-panel">
+            <div class="panel-header"><div><h2>Recent activity</h2><p>Latest system events</p></div></div>
+            <div class="activity-list" id="activityList"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="page-crowd">
+        <div class="page-heading"><div><p class="eyebrow">VISITOR FLOW</p><h1>Crowd monitor</h1><p class="subheading">Review simulated visitor density and identify congested areas.</p></div><button class="button button-primary" id="simulateCrowdBtn">↻ Simulate new reading</button></div>
+        <div class="notice-banner"><span class="notice-symbol">ⓘ</span><div><strong>Simulated monitoring</strong><p>Crowd readings are generated sample values. No CCTV feed or live people-detection model is connected in this version.</p></div></div>
+        <div class="metric-grid three-metrics">
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon green">♙</span></div><p class="metric-label">Estimated visitors</p><div class="metric-value"><span id="crowdVisitorTotal">128</span><small> people</small></div><p class="metric-foot">Across all monitored zones</p></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon amber">◉</span></div><p class="metric-label">Zones above 70%</p><div class="metric-value"><span id="crowdedZones">2</span><small> zones</small></div><p class="metric-foot">Consider visitor-flow management</p></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon blue">⌁</span></div><p class="metric-label">Recommended capacity</p><div class="metric-value">200<small> people</small></div><p class="metric-foot">Illustrative site-wide limit</p></article>
+        </div>
+        <article class="panel full-panel"><div class="panel-header"><div><h2>Monitored zones</h2><p>Occupancy percentage is relative to each zone's demo capacity.</p></div><span class="updated-label"><i></i> Demo readings</span></div><div class="zone-cards" id="crowdZoneCards"></div></article>
+        <article class="panel full-panel"><div class="panel-header"><div><h2>Crowd management recommendations</h2><p>Rule-based suggestions from current sample readings</p></div></div><div class="recommendation-grid" id="crowdRecommendations"></div></article>
+      </section>
+
+      <section class="page" id="page-wear">
+        <div class="page-heading"><div><p class="eyebrow">CONSERVATION INTELLIGENCE</p><h1>Heritage wear analyzer</h1><p class="subheading">Upload a surface image for a lightweight visual-texture screening.</p></div><span class="demo-pill large"><i></i> DEMO ANALYSIS</span></div>
+        <div class="notice-banner"><span class="notice-symbol">ⓘ</span><div><strong>Visual screening · not a trained AI model</strong><p>The browser calculates a simple image-texture indicator. It cannot diagnose deterioration or determine structural safety.</p></div></div>
+        <div class="wear-layout">
+          <article class="panel upload-panel"><div class="panel-header"><div><h2>Inspection image</h2><p>Upload a photo of stonework or a heritage surface.</p></div></div>
+            <label class="upload-drop" id="uploadDrop" for="wearImageInput"><input type="file" id="wearImageInput" accept="image/*" hidden/><span class="upload-icon">↑</span><strong>Choose an image to inspect</strong><span>Drag and drop here, or <u>browse files</u></span><small>JPG, PNG or WEBP · Processed locally in your browser</small></label>
+            <div class="image-preview hidden" id="imagePreview"><img id="previewImage" alt="Selected inspection image"/><div><strong id="previewName">inspection-image.jpg</strong><small id="previewSize">Image selected</small><button class="text-button" id="removeImage">Remove image</button></div></div>
+            <div class="form-row"><label for="inspectionZone">Heritage zone</label><select id="inspectionZone"><option>Western Wall</option><option>Ancient Pillars</option><option>Temple Courtyard</option><option>East Gallery</option><option>South Corridor</option></select></div>
+            <div class="form-row"><label for="inspectionNotes">Inspector notes <span>Optional</span></label><textarea id="inspectionNotes" rows="3" placeholder="e.g. Fine lines visible near the lower stone blocks..."></textarea></div>
+            <button class="button button-primary button-wide" id="analyzeWearBtn">Analyze image <span>→</span></button>
+          </article>
+          <article class="panel analysis-panel"><div class="panel-header"><div><h2>Assessment summary</h2><p>Local image-texture screening</p></div><span class="status-tag status-review" id="analysisStatus">Awaiting image</span></div>
+            <div class="analysis-empty" id="analysisEmpty"><div class="empty-art"><span>⌕</span><i></i><b></b></div><h3>No assessment yet</h3><p>Upload an image and run the demo assessment to see a sample report.</p></div>
+            <div class="analysis-result hidden" id="analysisResult"><div class="result-score"><div><small>TEXTURE INDICATOR</small><div><strong id="wearScore">68</strong><span>/100</span></div></div><div class="score-ring" id="scoreRing"><span>!</span></div></div><div class="result-detail"><span class="result-dot"></span><div><strong id="wearFinding">Possible surface deterioration</strong><p id="wearDescription">Illustrative finding only. A qualified conservator must verify the surface condition.</p></div></div><div class="result-meta"><div><small>SELECTED ZONE</small><strong id="resultZone">Western Wall</strong></div><div><small>ASSESSMENT TYPE</small><strong>Pixel texture</strong></div></div><div class="result-recommendation"><strong>Recommended next step</strong><p id="wearRecommendation">Arrange an in-person inspection and compare with prior condition photographs.</p></div><p class="disclaimer">This heuristic is not a validated damage score, trained AI diagnosis, or structural safety assessment. Ask a qualified conservator to verify any concern.</p></div>
+          </article>
+        </div>
+        <article class="panel full-panel"><div class="panel-header"><div><h2>Inspection history</h2><p>Saved locally in this browser; not shared with a server</p></div></div><div class="table-wrap"><table><thead><tr><th>DATE</th><th>ZONE</th><th>FINDING</th><th>INDICATOR</th><th>STATUS</th></tr></thead><tbody id="inspectionHistory"></tbody></table></div></article>
+      </section>
+
+      <section class="page" id="page-map">
+        <div class="page-heading"><div><p class="eyebrow">SITE OPERATIONS</p><h1>Site map</h1><p class="subheading">Explore the site's illustrative zones and their current status.</p></div><span class="demo-pill large"><i></i> SCHEMATIC MAP</span></div>
+        <div class="notice-banner"><span class="notice-symbol">ⓘ</span><div><strong>Not a geographic map</strong><p>This schematic is for the prototype. Zone positions and occupancy readings are illustrative.</p></div></div>
+        <div class="map-layout"><article class="panel map-panel"><div class="panel-header"><div><h2>Chola Heritage Complex</h2><p>Select a zone to inspect its status</p></div><span class="map-north">N ↑</span></div><div class="site-map" id="siteMap">
+          <div class="map-path path-one"></div><div class="map-path path-two"></div>
+          <button class="map-zone entrance" data-zone="Main Entrance"><span>↗</span><strong>Main Entrance</strong><small>42% occupied</small></button>
+          <button class="map-zone courtyard" data-zone="Temple Courtyard"><span>⌂</span><strong>Temple Courtyard</strong><small>78% occupied</small></button>
+          <button class="map-zone pillars" data-zone="Ancient Pillars"><span>▥</span><strong>Ancient Pillars</strong><small>92% occupied</small></button>
+          <button class="map-zone gallery" data-zone="East Gallery"><span>▤</span><strong>East Gallery</strong><small>35% occupied</small></button>
+          <button class="map-zone corridor" data-zone="South Corridor"><span>↔</span><strong>South Corridor</strong><small>66% occupied</small></button>
+          <div class="map-compass">N<br>↑</div>
+        </div><div class="map-legend"><span><i class="legend-dot low"></i>Normal</span><span><i class="legend-dot medium"></i>Moderate</span><span><i class="legend-dot high"></i>High density</span><span><i class="legend-dot wear-dot"></i>Wear flag</span></div></article>
+          <article class="panel map-detail"><div class="panel-header"><div><h2>Zone details</h2><p>Selected monitoring area</p></div></div><div id="mapDetail"><div class="detail-icon">⌖</div><h3>Select a zone</h3><p>Choose a zone on the schematic to view its demo readings.</p></div></article></div>
+      </section>
+
+      <section class="page" id="page-reports">
+        <div class="page-heading"><div><p class="eyebrow">AUDIT & FOLLOW-UP</p><h1>Reports & alerts</h1><p class="subheading">Track potential risks and review recommended follow-up actions.</p></div><button class="button button-primary" id="exportCsvBtn">↓ Export CSV</button></div>
+        <div class="notice-banner"><span class="notice-symbol">ⓘ</span><div><strong>Sample records</strong><p>These alerts are for demonstration only. Exported records contain prototype data.</p></div></div>
+        <div class="report-toolbar"><div class="filter-tabs" id="alertFilters"><button class="filter-tab active" data-filter="all">All alerts <span id="allAlertCount">3</span></button><button class="filter-tab" data-filter="active">Active <span id="activeAlertCount">3</span></button><button class="filter-tab" data-filter="resolved">Resolved <span id="resolvedAlertCount">0</span></button></div><input id="alertSearch" class="search-input" type="search" placeholder="⌕  Search alerts..." aria-label="Search alerts"/></div>
+        <article class="panel full-panel"><div class="table-wrap"><table class="alerts-table"><thead><tr><th>ALERT</th><th>ZONE</th><th>PRIORITY</th><th>TIME</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="alertsTable"></tbody></table></div><div class="empty-table hidden" id="emptyAlerts">No alerts match this filter.</div></article>
+        <article class="panel full-panel"><div class="panel-header"><div><h2>Suggested conservation workflow</h2><p>Recommended operational steps for a real deployment</p></div></div><div class="workflow-grid"><div><span>01</span><strong>Observe</strong><p>Collect approved camera readings and repeatable inspection photos.</p></div><div><span>02</span><strong>Validate</strong><p>Have staff verify automated flags before taking action.</p></div><div><span>03</span><strong>Respond</strong><p>Manage visitor flow or schedule a conservator inspection.</p></div><div><span>04</span><strong>Record</strong><p>Save outcomes to compare site conditions over time.</p></div></div></article>
+      </section>
+      <footer class="footer"><span>© 2026 HeritageGuard AI · Mini-project prototype</span><span>Built for smarter heritage preservation <b>✦</b></span></footer>
+    </main>
+  </div>
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
